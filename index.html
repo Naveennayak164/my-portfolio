@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="V Naveen Naik — QA Automation Tester Portfolio" />
+  <title>V Naveen Naik | QA Automation Tester</title>
+  <style>
+    :root{
+      --bg:#07111f; --panel:#0d1b2f; --panel2:#101f36; --text:#eef5ff;
+      --muted:#9fb1c9; --line:rgba(255,255,255,.10); --accent:#63e6ff;
+      --accent2:#9b7bff; --good:#56f39a; --shadow:0 24px 80px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(99,230,255,.12), transparent 28%),
+        radial-gradient(circle at 85% 10%, rgba(155,123,255,.13), transparent 30%),
+        linear-gradient(180deg,#06101d 0%,#081626 45%,#07111f 100%);
+      color:var(--text);line-height:1.6;overflow-x:hidden
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1140px,92%);margin:auto}
+    .nav{
+      position:fixed;top:0;left:0;right:0;z-index:1000;
+      backdrop-filter:blur(18px);background:rgba(6,16,29,.72);
+      border-bottom:1px solid transparent;transition:.3s
+    }
+    .nav.scrolled{border-color:var(--line);background:rgba(6,16,29,.9)}
+    .nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-weight:800;letter-spacing:.02em;font-size:1.05rem}
+    .brand span{color:var(--accent)}
+    .nav-links{display:flex;gap:26px;align-items:center}
+    .nav-links a{color:var(--muted);font-size:.92rem;transition:.25s}
+    .nav-links a:hover{color:var(--text)}
+    .menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--text);padding:8px 10px;border-radius:10px}
+
+    .hero{min-height:100vh;display:grid;place-items:center;padding:120px 0 70px;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.4fr .8fr;gap:58px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid var(--line);
+      border-radius:999px;background:rgba(255,255,255,.035);color:var(--muted);font-size:.83rem}
+    .dot{width:8px;height:8px;background:var(--good);border-radius:50%;box-shadow:0 0 15px var(--good)}
+    h1{font-size:clamp(3rem,8vw,6rem);line-height:.95;letter-spacing:-.055em;margin:22px 0}
+    .gradient{background:linear-gradient(100deg,var(--accent),#fff 45%,var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{max-width:720px;color:var(--muted);font-size:1.09rem}
+    .hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+    .btn{padding:13px 18px;border-radius:12px;border:1px solid var(--line);font-weight:700;font-size:.94rem;transition:.25s;display:inline-flex;align-items:center;gap:8px}
+    .btn:hover{transform:translateY(-2px);border-color:rgba(99,230,255,.35)}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),#8af0ff);color:#04202a;border:none}
+    .btn.secondary{background:rgba(255,255,255,.04)}
+    .hero-card{
+      background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));
+      border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:var(--shadow);
+      position:relative;overflow:hidden
+    }
+    .hero-card:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-70px;top:-70px;
+      background:radial-gradient(circle,rgba(99,230,255,.35),transparent 67%)}
+    .avatar{width:82px;height:82px;border-radius:22px;display:grid;place-items:center;font-weight:900;font-size:1.5rem;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));color:#07111f;margin-bottom:22px}
+    .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .stat{padding:16px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.035)}
+    .stat strong{font-size:1.35rem;display:block}
+    .stat small{color:var(--muted)}
+
+    section{padding:100px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:35px}
+    .section-head h2{font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.03em}
+    .section-head p{max-width:620px;color:var(--muted)}
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+    .card{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:22px;padding:26px}
+    .card p{color:var(--muted)}
+    .contact-info{display:grid;gap:14px;margin-top:22px}
+    .contact-item{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--line)}
+    .contact-item:last-child{border-bottom:0}
+    .icon{width:34px;height:34px;border-radius:10px;background:rgba(99,230,255,.09);display:grid;place-items:center;color:var(--accent)}
+    .contact-item span{color:var(--muted);font-size:.9rem;display:block}
+
+    .chips{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{border:1px solid var(--line);padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.035);font-size:.88rem;color:#d9e6f7}
+    .skill-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .skill-group h3{margin-bottom:12px;font-size:1rem}
+    .skill-group p{color:var(--muted);font-size:.9rem;margin-bottom:12px}
+
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .project{position:relative;overflow:hidden;transition:.3s}
+    .project:hover{transform:translateY(-6px)}
+    .project .tag{display:inline-block;color:var(--accent);font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px}
+    .project h3{font-size:1.28rem;margin-bottom:10px}
+    .project ul{padding-left:18px;color:var(--muted)}
+    .project li{margin:7px 0}
+    .project-footer{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+
+    .timeline{border-left:1px solid var(--line);margin-left:10px;padding-left:25px}
+    .edu{position:relative;margin-bottom:28px}
+    .edu:before{content:"";position:absolute;left:-32px;top:5px;width:12px;height:12px;border-radius:50%;
+      background:var(--accent);box-shadow:0 0 0 5px rgba(99,230,255,.09)}
+    .edu h3{font-size:1.08rem}
+    .edu .muted{color:var(--muted);font-size:.91rem}
+
+    .cta{padding:38px;border-radius:26px;border:1px solid var(--line);background:
+      linear-gradient(135deg,rgba(99,230,255,.10),rgba(155,123,255,.10));display:flex;justify-content:space-between;
+      align-items:center;gap:25px}
+    .cta h2{font-size:clamp(1.6rem,3vw,2.3rem)}
+    .cta p{color:var(--muted);margin-top:7px}
+
+    footer{padding:35px 0 50px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+    .footer-inner{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.show{opacity:1;transform:none}
+    .cursor-glow{position:fixed;width:220px;height:220px;border-radius:50%;pointer-events:none;
+      background:radial-gradient(circle,rgba(99,230,255,.07),transparent 65%);transform:translate(-50%,-50%);z-index:-1}
+
+    @media(max-width:850px){
+      .hero-grid,.about,.projects{grid-template-columns:1fr}
+      .hero{padding-top:110px}
+      .nav-links{display:none;position:absolute;top:72px;left:4%;right:4%;padding:16px;border:1px solid var(--line);
+        background:rgba(6,16,29,.96);border-radius:16px;flex-direction:column;align-items:flex-start}
+      .nav-links.open{display:flex}
+      .menu-btn{display:block}
+    }
+    @media(max-width:620px){
+      section{padding:75px 0}
+      h1{font-size:3.4rem}
+      .skill-groups{grid-template-columns:1fr}
+      .cta{align-items:flex-start;flex-direction:column}
+      .hero-card{padding:22px}
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor-glow" id="glow"></div>
+
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#home">NAVEEN<span>.QA</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow"><span class="dot"></span> Open to QA / Automation opportunities</div>
+          <h1>V NAVEEN<br><span class="gradient">NAIK</span></h1>
+          <p>
+            QA Automation Tester with hands-on project experience in Selenium and Playwright for web application testing,
+            with Python, JavaScript, API testing, SQL/MySQL validation, and AI-assisted test automation.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">Explore Projects ↗</a>
+            <a class="btn secondary" href="#contact">Contact Me</a>
+          </div>
+        </div>
+
+        <aside class="hero-card reveal">
+          <div class="avatar">VN</div>
+          <h3>QA Automation Tester</h3>
+          <p style="color:var(--muted);margin:7px 0 22px">
+            Selenium • Playwright • Python • JavaScript
+          </p>
+          <div class="stat-grid">
+            <div class="stat"><strong>2</strong><small>Automation projects</small></div>
+            <div class="stat"><strong>5+</strong><small>Core test tools</small></div>
+            <div class="stat"><strong>3</strong><small>Browser engines</small></div>
+            <div class="stat"><strong>AI</strong><small>Assisted testing</small></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><h2>About Me</h2></div>
+          <p>Focused on building reliable, maintainable automation and improving software quality through practical testing.</p>
+        </div>
+        <div class="about">
+          <div class="card reveal">
+            <h3>Professional Summary</h3>
+            <p style="margin-top:12px">
+              QA Automation Tester with hands-on experience in Selenium and Playwright for web application testing.
+              Skilled in Python and JavaScript for test scripting, API testing, and database validation using SQL/MySQL.
+              Experienced with Microsoft Copilot, ChatGPT and Claude to accelerate test-script generation and debugging.
+            </p>
+            <p style="margin-top:14px">
+              Strong foundation in software testing life cycle, functional testing, regression testing, and quality assurance best practices.
+            </p>
+          </div>
+          <div class="card reveal">
+            <h3>What I Work With</h3>
+            <div class="contact-info">
+              <div class="contact-item">
+                <div class="icon">⚙</div>
+                <div><b>Automation</b><span>Selenium, Playwright, TestNG, PyTest</span></div>
+              </div>
+              <div class="contact-item">
+                <div class="icon">⌘</div>
+                <div><b>Programming</b><span>Python, JavaScript</span></div>
+              </div>
+              <div class="contact-item">
+                <div class="icon">◉</div>
+                <div><b>Quality &amp; APIs</b><span>Postman, JIRA, STLC, Bug Life Cycle</span></div>
+              </div>
+              <div class="contact-item">
+                <div class="icon">▣</div>
+                <div><b>Data &amp; Version Control</b><span>SQL, MySQL, Git, GitHub</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><h2>Technical Skills</h2></div>
+          <p>A focused QA automation toolkit based on the technologies listed in the resume.</p>
+        </div>
+        <div class="skill-groups">
+          <div class="card skill-group reveal">
+            <h3>Automation Testing</h3>
+            <p>Web UI automation and test frameworks</p>
+            <div class="chips"><span class="chip">Selenium</span><span class="chip">Playwright</span><span class="chip">TestNG</span><span class="chip">PyTest</span></div>
+          </div>
+          <div class="card skill-group reveal">
+            <h3>Programming</h3>
+            <p>Test scripting and web technologies</p>
+            <div class="chips"><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">HTML</span><span class="chip">CSS</span></div>
+          </div>
+          <div class="card skill-group reveal">
+            <h3>AI Tools</h3>
+            <p>AI-assisted test generation and debugging</p>
+            <div class="chips"><span class="chip">Microsoft Copilot</span><span class="chip">ChatGPT</span><span class="chip">Claude</span><span class="chip">Gen2</span></div>
+          </div>
+          <div class="card skill-group reveal">
+            <h3>Data / Dev Tools</h3>
+            <p>Validation, source control, API and tracking</p>
+            <div class="chips"><span class="chip">SQL</span><span class="chip">MySQL</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Postman</span><span class="chip">JIRA</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><h2>Featured Projects</h2></div>
+          <p>Two OrangeHRM automation projects demonstrating both Selenium/Python and Playwright/JavaScript workflows.</p>
+        </div>
+        <div class="projects">
+          <article class="card project reveal">
+            <span class="tag">Selenium + Python</span>
+            <h3>OrangeHRM Web Application Testing</h3>
+            <ul>
+              <li>Automated login, employee management, and leave management modules.</li>
+              <li>Performed functional and regression testing across multiple test cycles.</li>
+              <li>Applied Page Object Model (POM) for reusable, maintainable scripts.</li>
+              <li>Logged defects with clear reproduction steps and prepared test execution reports.</li>
+            </ul>
+            <div class="project-footer">
+              <span class="chip">Selenium WebDriver</span><span class="chip">Python</span><span class="chip">POM</span>
+            </div>
+          </article>
+
+          <article class="card project reveal">
+            <span class="tag">Playwright + JavaScript</span>
+            <h3>OrangeHRM AI-Assisted Automation</h3>
+            <ul>
+              <li>Automated UI validation and cross-browser test scenarios.</li>
+              <li>Used ChatGPT, Claude, and Microsoft Copilot for script generation and debugging.</li>
+              <li>Improved test coverage while reducing manual testing effort through reusable scripts.</li>
+              <li>Validated behavior across Chromium, Firefox, and WebKit.</li>
+            </ul>
+            <div class="project-footer">
+              <span class="chip">Playwright</span><span class="chip">JavaScript</span><span class="chip">AI-Assisted</span><span class="chip">Cross-Browser</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><h2>Education</h2></div>
+          <p>Academic background from the provided resume.</p>
+        </div>
+        <div class="card timeline reveal">
+          <div class="edu">
+            <h3>MBA (Finance)</h3>
+            <div class="muted">Amrita Sai Institute of Science and Technology, Paritala • CGPA: 7.5</div>
+          </div>
+          <div class="edu">
+            <h3>B.Com (Computer Applications)</h3>
+            <div class="muted">Narayana Memorial Degree College, Kanchikacherla • CGPA: 8.0</div>
+          </div>
+          <div class="edu">
+            <h3>Intermediate (CEC)</h3>
+            <div class="muted">Deeksha Junior College, Kanchikacherla • 565 Marks</div>
+          </div>
+          <div class="edu" style="margin-bottom:0">
+            <h3>SSC</h3>
+            <div class="muted">ZPH School, Kanchikacherla • CGPA: 6.8</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="cta reveal">
+          <div>
+            <h2>Let’s build quality into every release.</h2>
+            <p>Available for QA Automation Tester opportunities.</p>
+          </div>
+          <div class="hero-actions" style="margin-top:0">
+            <a class="btn primary" href="mailto:vankudotunaveennaik@gmail.com">Email Me</a>
+            <a class="btn secondary" href="tel:8897128216">Call Me</a>
+            {f'<a class="btn secondary" href="{html.escape(resume_link)}" target="_blank">View Resume</a>' if resume_link else ''}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> V Naveen Naik</div>
+      <div>QA Automation • Selenium • Playwright • AI-Assisted Testing</div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById("nav");
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+    const glow = document.getElementById("glow");
+
+    window.addEventListener("scroll", () => nav.classList.toggle("scrolled", window.scrollY > 20));
+
+    menuBtn.addEventListener("click", () => navLinks.classList.toggle("open"));
+    navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => navLinks.classList.remove("open")));
+
+    window.addEventListener("mousemove", (e) => {
+      glow.style.left = e.clientX + "px";
+      glow.style.top = e.clientY + "px";
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add("show");
+      });
+    }, {threshold:.12});
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
